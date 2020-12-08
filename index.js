@@ -21,7 +21,10 @@ function crawlAllUrls(url) {
                             obselete.push(href);
                             // Slow down the
                             setTimeout(function() {
-                                href.startsWith(url) ? crawlAllUrls(href) : crawlAllUrls(`${url}${href}`) // The latter might need extra code to test if its the same site and it is a full domain with no URI
+                                // href.startsWith("https") ? crawlAllUrls(href) : crawlAllUrls(`${url}${href}`)
+                                if (!href.startsWith("https")) {
+                                    crawlAllUrls(`${url}${href}`)
+                                }
                             }, 5000)
 
                         }
